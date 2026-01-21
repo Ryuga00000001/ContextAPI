@@ -1,16 +1,27 @@
-# React + Vite
+# Demo: React Data Architecture & Context API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Dự án này là bài tập minh họa về **Kiến trúc Dữ liệu trong React**, tập trung vào việc phân chia trách nhiệm giữa các Component và sử dụng **Context API** để giải quyết vấn đề **Prop Drilling**.
 
-Currently, two official plugins are available:
+## 🎯 Mục tiêu Nhiệm vụ
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1.  **Phân biệt Kiến trúc:**
+    * **Stateless Components (Presentational):** Chỉ chịu trách nhiệm hiển thị UI (`UserProfile`).
+    * **Stateful Components (Container):** Chịu trách nhiệm quản lý Logic và State (`MainContainer`).
+2.  **Container Pattern:** Tách biệt logic ra khỏi giao diện.
+3.  **Context API:** Giải pháp chia sẻ dữ liệu toàn cục, tránh việc truyền props qua nhiều cấp trung gian (Prop Drilling).
 
-## React Compiler
+## 📂 Cấu trúc Thư mục
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Kiến trúc dự án được tổ chức rõ ràng theo chức năng:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+src/
+├── contexts/
+│   └── AppContext.jsx       # Khởi tạo Context (Kho dữ liệu chung)
+├── containers/
+│   └── MainContainer.jsx    # Stateful Component (Provider - Quản lý State & Logic)
+├── components/
+│   ├── Navbar.jsx           # Intermediate Component (Trung gian - Không nhận Props)
+│   └── UserProfile.jsx      # Stateless Component (Consumer - Hiển thị dữ liệu)
+├── App.jsx
+└── main.jsx
