@@ -1,3 +1,5 @@
+link demo: https://context-api-hazel.vercel.app/
+
 # Demo: React Data Architecture & Context API
 
 Dự án này là bài tập minh họa về **Kiến trúc Dữ liệu trong React**, tập trung vào việc phân chia trách nhiệm giữa các Component và sử dụng **Context API** để giải quyết vấn đề **Prop Drilling**.
